@@ -1,0 +1,10 @@
+.div {
+    width: 50vh;
+    height: 66vh;
+    border: 0.25vh;
+    border-block-color: #000;
+    border-radius: 3vh;
+    margin: 8vh auto;
+    background: rgba(0, 0, 0, 0.67);
+    box-shadow: 1.5vh 3vh 3vh rgba(0, 0, 0, 0.47)
+}

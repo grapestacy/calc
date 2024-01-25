@@ -1,0 +1,11 @@
+.button {
+    background: #FF9F0B;
+  }
+
+.button:active {
+    background: #BE802D;
+}
+
+#solve {
+  border-radius: 0 0 3vh 0;
+}

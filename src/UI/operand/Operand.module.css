@@ -1,0 +1,15 @@
+.button {
+    background: rgba(255, 255, 255, 0.39);
+}
+
+.button:active {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+#zero {
+    width: 100%;
+    border-radius: 0 0 0 3vh;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+}
