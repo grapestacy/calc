@@ -1,17 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { SOLVE } from "../../constants/operations";
-//import { countMath } from "../../actions/index";
 import classes from "./Operator.module.css";
+import { countMath } from "../../actions/index";
 
 interface OperatorProps {
-  value: number;
-  displayValue: number;
+  value: string;
+  displayValue: string;
   operator: string;
   waitingForNumber: boolean;
   label: string;
   operation: string;
-  //countMath: (operation: string, value: number, displayValue: number, operator: string, waitingForNumber: boolean) => void;
+  countMath: (operation: string, value: string, displayValue: string, operator: string, waitingForNumber: boolean) => void;
 }
 
 const Operator: React.FC<OperatorProps> = ({ value, displayValue, operator, waitingForNumber, label, operation, countMath }) => {
@@ -35,5 +35,9 @@ const mapStateToProps = (state: any) => {
   };
 };
 
-export default connect(mapStateToProps, { countMath })(Operator);
+// const mapDispatchToProps = {
+//   countMath
+// };
+
+export default connect(mapStateToProps,{countMath})(Operator);
 

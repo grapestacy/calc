@@ -1,15 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import classes from "./Display.module.css"
+import classes from "./Display.module.css";
 
-const Display = ({ displayValue }) => {
+interface DisplayProps {
+  displayValue: string;
+}
+
+const Display: React.FC<DisplayProps> = ({ displayValue }) => {
   return (
     <h1 className={classes.display}>{displayValue}</h1>
   );
 };
 
-const mapStateToProps = state => ({
-  displayValue: state.displayValue
+const mapStateToProps = (state: any) => ({
+  displayValue: state.calculator.displayValue
 });
 
-export function connect(mapStateToProps)(Display);
+export default connect(mapStateToProps)(Display);
+

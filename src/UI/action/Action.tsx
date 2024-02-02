@@ -1,14 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
-import { clearDisplay, clearAll, setDisplayValue} from "../../actions/index";
+import { setDisplayValue } from "../../actions/index";
+import {clearDisplay, clearAll} from "../../containers/calculatorSlice"
 import {SET_DISPLAY, CLEAR_ALL, CLEAR_DISPLAY} from "../../actions/types";
 
-const Action = ({ action, displayValue, label, clearDisplay, clearAll, setDisplayValue}) => {
+interface ActionProps {
+  action: string;
+  displayValue: string;
+  label: string;
+  clearDisplay: () => void;
+  clearAll: () => void;
+  setDisplayValue: (value: string, label: string) => void;
+}
 
+const Action: React.FC<ActionProps> = ({ action, displayValue, label, clearDisplay, clearAll, setDisplayValue}) => {
   const checkClearMethod = displayValue === '0';
   const clearText = checkClearMethod ? 'AC' : 'C';
 
-  //console.log(action)
   const handleActionRequest = () => {
     switch (action) {
       case SET_DISPLAY:
@@ -17,7 +25,6 @@ const Action = ({ action, displayValue, label, clearDisplay, clearAll, setDispla
       default:
         (checkClearMethod) ? clearAll() : clearDisplay();
         break;
-
     }
   };
 
@@ -28,23 +35,17 @@ const Action = ({ action, displayValue, label, clearDisplay, clearAll, setDispla
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: { displayValue: string }) => {
   return {
       displayValue: state.displayValue
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    clearAll, 
-    clearDisplay, 
-    setDisplayValue
-  }
+const mapDispatchToProps = {
+  clearAll, 
+  clearDisplay, 
+  setDisplayValue
+};
 
-}
+export default connect(mapStateToProps, mapDispatchToProps)(Action);
 
-export default connect(mapStateToProps, { 
-  clearDisplay,
-  clearAll,
-  setDisplayValue}
-)(Action);

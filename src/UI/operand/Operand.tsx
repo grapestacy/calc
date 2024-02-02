@@ -4,20 +4,20 @@ import { setNumberValue } from "../../actions";
 import classes from "./Operand.module.css";
 
 interface OperandProps {
-  displayValue: number;
+  displayValue: string;
   waitingForNumber: boolean;
-  number: number;
-  //setNumberValue: (number: number, displayValue: number, waitingForNumber: boolean) => void;
+  value: string;
+  setNumberValue: (number: string, displayValue: string, waitingForNumber: boolean) => void;
 }
 
-const Operand: React.FC<OperandProps> = ({ displayValue, waitingForNumber, number: number, setNumberValue }) => {
+const Operand: React.FC<OperandProps> = ({ displayValue, waitingForNumber, value, setNumberValue }) => {
   const handleClick = () => {
-    setNumberValue(number, displayValue, waitingForNumber);
+    setNumberValue(value, displayValue, waitingForNumber);
   };
 
   return (
-    <button id={number === 0 ? classes.zero : ''} onClick={handleClick}>
-      {number}
+    <button id={value === '0' ? classes.zero : ''} onClick={handleClick}>
+      {value}
     </button>
   );
 };

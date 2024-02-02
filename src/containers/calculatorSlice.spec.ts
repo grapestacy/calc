@@ -1,7 +1,8 @@
-import { clearAll, clearDisplay, setDisplay } from "../actions"
+import { clearAll, clearDisplay, setDisplay } from "../containers/calculatorSlice"
 import calculatorReducer, {
     CalculatorState,
   } from "./calculatorSlice"
+
 //   value: number, 
 //   displayValue: string, 
 //   operator: string,
@@ -10,19 +11,17 @@ import calculatorReducer, {
 
   describe("calculator reducer", () => {
     const initialState: CalculatorState = {
-      value: 3,
+      value: '3',
       displayValue: '3',
       operator:"PLUS",
-      waitingForNumber:false,
-      status: "idle",
+      waitingForNumber:false
     }
     it("should handle initial state", () => {
       expect(calculatorReducer(undefined, { type: "unknown" })).toEqual({
-        value: 0,
+        value: '0',
         displayValue: '0',
         operator:"",
-        waitingForNumber:true,
-        status: "idle",
+        waitingForNumber:true
       })
     })
   
@@ -37,15 +36,14 @@ import calculatorReducer, {
         value: 0,
         displayValue: '0',
         operator:"",
-        waitingForNumber:true,
-        status: "idle",
+        waitingForNumber:true
         }
       )
     })
   
     it("should handle setDisplay", () => {
       const actual = calculatorReducer(initialState, setDisplay('3'))
-      expect(actual.displayValue).toEqual(3)
+      expect(actual.displayValue).toEqual('3')
     })
   })
   
