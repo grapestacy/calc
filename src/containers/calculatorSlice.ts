@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { RootState, AppThunk } from "../app/store"
+import { RootState, AppThunk, store } from "../app/store"
 
 export interface CalculatorState {
   value: string, 
@@ -40,9 +40,13 @@ export const calculatorSlice = createSlice({
   reducers: {
     clearDisplay: (state) => {
         state.displayValue = '0';
+        console.log("cyka")
     }, 
     clearAll: (state) => {
-        state = initialState;
+      state.displayValue = '0';
+      state.value = '0';
+      state.waitingForNumber = false
+      state.operator='';
     },
     setDisplay: (state, action: PayloadAction<string>) => {
         state.displayValue = action.payload;
