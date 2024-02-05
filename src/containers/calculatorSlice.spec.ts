@@ -6,8 +6,7 @@ import calculatorReducer, {
 //   value: number, 
 //   displayValue: string, 
 //   operator: string,
-//   waitingForNumber: boolean,
-//   status: "idle" | "loading" | "failed"
+//   waitingForNumber: boolean
 
   describe("calculator reducer", () => {
     const initialState: CalculatorState = {

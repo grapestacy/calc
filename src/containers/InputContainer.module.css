@@ -1,28 +1,30 @@
-.button {
+button {
     width: 12.3vh;
     height: 10vh;
     border: none;
-    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 5vh;
     cursor: pointer;
     user-select: none;
-    background: red;
-    
+    background-color: none;
+    color: rgb(224, 224, 224);
 }
 
-.div {
+.container {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-gap: 0.2vh;
-}
-
-.div > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1fr 1fr;
     justify-items: center;
     align-items: center;
     grid-gap: 0.2vh;
 }
+
+.operators {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-gap: 0.2vh;
+}
+
+

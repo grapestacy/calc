@@ -1,36 +1,29 @@
 import React from "react";
-import { connect } from "react-redux";
 import { setNumberValue } from "../../actions";
 import classes from "./Operand.module.css";
+import { useAppSelector, useAppDispatch} from "../../app/hooks";
+import { selectDisplayValue, selectWaitingForNumber } from "../../selectors/calculator";
 
 interface OperandProps {
-  displayValue: string;
-  waitingForNumber: boolean;
   value: string;
-  setNumberValue: (number: string, displayValue: string, waitingForNumber: boolean) => void;
 }
 
-const Operand: React.FC<OperandProps> = ({ displayValue, waitingForNumber, value, setNumberValue }) => {
+const Operand: React.FC<OperandProps> = ({value}) => {
+  
+  const displayValue = useAppSelector(selectDisplayValue);
+  const waitingForNumber = useAppSelector(selectWaitingForNumber);
+  const dispatch = useAppDispatch();
+
   const handleClick = () => {
-    setNumberValue(value, displayValue, waitingForNumber);
+    dispatch(setNumberValue(value, displayValue, waitingForNumber));
   };
 
   return (
-    <button id={value === '0' ? classes.zero : ''} onClick={handleClick}>
+    <button className={classes.operand} id={value === '0' ? classes.zero : ''} onClick={handleClick}>
       {value}
     </button>
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    displayValue: state.calculator.displayValue,
-    waitingForNumber: state.calculator.waitingForNumber
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { setNumberValue }
-)(Operand);
+export default Operand;
 

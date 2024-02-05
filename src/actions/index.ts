@@ -7,30 +7,28 @@ import {
   DoMathType
 } from "../containers/calculatorSlice"   
 
-   //thunk action creator
-
 const percentInput = (n: number) => n/100;
 const swapSignInput = (n: number) => n*-1;
-
 
 export const setDisplayValue = (displayValue: string, operator: string) => {
   return (dispatch: any) => {
     let number = parseFloat(displayValue);
-  
+    
     switch(operator) {
       case '%':
-        percentInput(number);
+        number = percentInput(number);
         break;
       case '+/-':
-        swapSignInput(number);
+        number = swapSignInput(number);
         break;
       default:
         break;
       }
-  let result = number.toString();
-  store.dispatch(setDisplay(result))
+    let result = number.toString();
+    dispatch(setDisplay(result))
+    //console.log(store.getState());
   };
-  };
+};
 
 export const setNumberValue = (value: string, displayValue: string, waitingForNumber: boolean) => {
 
@@ -58,14 +56,16 @@ export const setNumberValue = (value: string, displayValue: string, waitingForNu
         calculator.waitingForNumber = false;
       }
     }
-  
   dispatch(setNumber(calculator))
+
   };
 };
 
 
 const Calculating = (prevValue: number, nextValue: number, operator: string) => {
+
   switch(operator){
+    
     case 'PLUS':
       return prevValue + nextValue;
     case 'MINUS':
@@ -79,16 +79,10 @@ const Calculating = (prevValue: number, nextValue: number, operator: string) => 
   }
 }
 
-  // const CalcOperations = {
-  //   'PLUS': (prevValue: number, nextValue: number) => prevValue + nextValue,
-  //   'MINUS' : (prevValue: number, nextValue: number) => prevValue - nextValue,
-  //   'MULTIPLY' : (prevValue: number, nextValue: number) => prevValue * nextValue,
-  //   'DIVIDE' : (prevValue: number, nextValue: number) => prevValue / nextValue,
-  //   'SOLVE' : (nextValue: number) => nextValue
-  // };
-
 export const countMath = (nextOperator: string, value: string, displayValue: string, operation: string, waitingForNumber: boolean) => {
 
+
+  console.log(store.getState())
 
   return (dispatch: any) => {
     let calculator: DoMathType = {
@@ -97,8 +91,10 @@ export const countMath = (nextOperator: string, value: string, displayValue: str
     operator: operation,
     waitingForNumber: waitingForNumber
   };
+
   const inputValue = parseFloat(displayValue);
-  if (value === null) {
+
+  if (value === '0') {
     calculator.value = inputValue.toString();
   }
   else if (operation && !waitingForNumber) {

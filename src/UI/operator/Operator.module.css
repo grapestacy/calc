@@ -1,9 +1,9 @@
-.button {
-    background: #FF9F0B;
+.operator {
+    background: #ff9b05e2;
   }
 
-.button:active {
-    background: #BE802D;
+.operator:active {
+    background: #ff99148b;
 }
 
 #solve {

@@ -1,13 +1,11 @@
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { RootState, AppThunk } from "../app/store"
-//import { fetchCount } from "./counterAPI"
-import Action from "../UI/action/Action"
 
 export interface CalculatorState {
-  value?: string, 
-  displayValue?: string, 
-  operator?: string,
-  waitingForNumber?: boolean
+  value: string, 
+  displayValue: string, 
+  operator: string,
+  waitingForNumber: boolean
 }
 
 const initialState: CalculatorState = {

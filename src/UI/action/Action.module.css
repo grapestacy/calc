@@ -1,7 +1,7 @@
-.button{
-    background: rgba(255, 255, 255, 0.19);
+.action{
+    background: rgba(255, 255, 255, 0.09);
 }
 
-.button:active{
+.action:active{
     background-color: rgba(255, 255, 255, 0.39);
 }
